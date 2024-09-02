@@ -1,0 +1,36 @@
+<html>
+<head></head>
+<body>
+<h3 >JavaScript Programming</h3>
+<hr/>
+Empno
+<input type="text" id="d1"  />
+<br></br>
+Ename<input type="text" id="d2"  />
+<br></br>
+job<input type="text" id="d3"  />
+<br></br>
+salary<input type="text" id="d4"  />
+<br></br>
+<input type="button" onclick="f1()" value="submit"  />
+ </br>
+<p id="p1"></p>
+
+<script>
+	function  f1()
+	{
+        let num1 = document.getElementById("d1");
+        let num2 = document.getElementById("d2");
+        let num3 = document.getElementById("d3");
+        let num4 = document.getElementById("d4");
+        
+        let n1 = num1.value;
+        let n2 = num2.value;
+        let n3 = num3.value;
+        let n4 = num4.value;
+        s="Empno :"+n1+", "+"Ename: "+n2+", "+"Job: "+n3+", "+"Salary: "+n4;
+        console.log(s);
+	 }
+</script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<html>
+<head></head>
+<body>
+<h3 >JavaScript Programming</h3>
+<hr/>
+First Number :  
+<input type="text" id="t1"  />
+<br></br>
+Second Number :  
+<input type="text" id="t2"  />
+<br></br>
+<input type="button" onclick="f1(event)" value="Add"  />	 	
+<input type="button" onclick="f1(event)" value="Subtract"  />	
+<input type="button" onclick="f1(event)" value="Multiply"  />	
+<input type="button" onclick="f1(event)" value="Divide"  />	
+ </br>
+<p id="p1"></p>
+
+<script>
+	function  f1(event)
+	{
+        let num1 = document.getElementById("t1");
+        let num2 = document.getElementById("t2");
+        let paraObj = document.getElementById("p1");
+
+        let n1 = num1.value;
+        let n2 = num2.value;
+        let c=event.target.value;
+        let d=0;
+        if(c=="Add"){
+            d=parseInt(n1)+parseInt(n2);
+        }
+        else if(c=="Subtract"){
+            d=parseInt(n1)-parseInt(n2);
+        }
+        else if(c=="Multiply"){
+            d=parseInt(n1)*parseInt(n2);
+        }
+        else if(c=="Divide"){
+            d=parseInt(n1)/parseInt(n2);
+        }
+        paraObj.innerHTML=d;
+	 }
+</script>
+</body>
+</html>

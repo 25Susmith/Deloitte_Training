@@ -1,0 +1,44 @@
+<html>
+<head></head>
+<body>
+<h3 >JavaScript Programming</h3>
+<hr/>
+product name 
+<input type="text" id="pn"  />
+unit price 
+<input type="text" id="up"  />
+<br></br>
+quantity 
+<input type="text" id="q"  />
+<br></br>
+<input type="button" onclick="f1()" value="Total"  />
+ </br>
+<p id="p1"></p>
+
+<script>
+	function  f1()
+	{
+        let num1 = document.getElementById("pn");
+        let num2 = document.getElementById("up");
+        let num3 = document.getElementById("q");
+        let paraObj = document.getElementById("p1");
+        
+
+        let n2 = num2.value;
+        let n3 = num3.value;
+        let s=parseInt(n2)*parseInt(n3);
+        if(parseInt(n3)>10 && parseInt(n3)<=20){
+            s=s*0.9
+        }
+        else if(parseInt(n3)>20 && parseInt(n3)<=30){
+            s=s*0.85
+        }
+        else if(parseInt(n3)>30){
+            s=s*0.8
+        }
+
+        paraObj.innerHTML=s;
+	 }
+</script>
+</body>
+</html>
