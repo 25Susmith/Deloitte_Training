@@ -1,0 +1,106 @@
+CREATE DATABASE ShoppingCartDb
+
+USE ShoppingCartDb
+
+CREATE TABLE ShoppingCartDb.dbo.Users
+(
+		UserId INT PRIMARY KEY,
+		UserName VARCHAR(20),
+		Password VARCHAR(20),
+		Contact INT,
+		City VARCHAR(20)
+);
+
+INSERT INTO Users VALUES(7369,'SMITH','CLERK',1600, 'Hyd');
+INSERT INTO Users VALUES(7499,'ALLEN','SALESMAN',800,'Hyd');
+INSERT INTO Users VALUES(7319,'WARD','SALESMAN',1250,'Chn');
+INSERT INTO Users VALUES(7566,'JONES','MANAGER',2975,'Chn');
+INSERT INTO Users VALUES(7567,'BONES','MANAGER',2975,'Bgl');
+
+CREATE TABLE ShoppingCartDb.dbo.Products
+(
+		ProductId INT PRIMARY KEY,
+		Name VARCHAR(20) NOT NULL,
+		InStock INT NOT NULL,
+		UnitPrice INT NOT NULL,
+		Category VARCHAR(20) NOT NULL
+);
+INSERT INTO Products VALUES(6369,'Phone',10,5000,'Gadgets');
+INSERT INTO Products VALUES(6269,'Laptop',20,55000,'Gadgets');
+INSERT INTO Products VALUES(6169,'Tab',20,15000,'Gadgets');
+INSERT INTO Products VALUES(6469,'Shirt',10,1500,'Clothes');
+INSERT INTO Products VALUES(6869,'T Shirt',50,500,'Clothes');
+INSERT INTO Products VALUES(6569,'Sweater',0,1500,'Clothes');
+INSERT INTO Products VALUES(6669,'Desktop',0,500,'Gadgets');
+
+
+CREATE TABLE Cart(
+		Id INT PRIMARY KEY,
+		CartId INT NOT NULL,
+		Quantity INT NOT NULL,
+		ProductId INT FOREIGN KEY
+		REFERENCES Products(ProductId)
+);
+
+INSERT INTO Cart VALUES(5369,1369,10,6269);
+INSERT INTO Cart VALUES(5469,1369,3,6169);
+INSERT INTO Cart VALUES(5169,1369,2,6469);
+INSERT INTO Cart VALUES(5769,1369,1,6869);
+INSERT INTO Cart VALUES(5969,1369,8,6369);
+
+select CartId, Name, Quantity, UnitPrice
+FROM Products
+INNER JOIN Cart
+ON Cart.ProductId=Products.ProductId;
+
+select CartId, Name, Quantity, UnitPrice
+FROM Products
+LEFT OUTER JOIN Cart
+ON Cart.ProductId=Products.ProductId;
+
+select CartId, Name, Quantity, UnitPrice
+FROM Products
+RIGHT OUTER JOIN Cart
+ON Cart.ProductId=Products.ProductId;
+
+select CartId, Name, Quantity, UnitPrice
+FROM Products
+FULL OUTER JOIN Cart
+ON Cart.ProductId=Products.ProductId;
+
+
+
+CREATE TABLE Student(
+		StudentId INT PRIMARY KEY,
+		StudentName VARCHAR(20) NOT NULL,
+		CourseName VARCHAR(20) NOT NULL,
+		CityName VARCHAR(20) NOT NULL,
+		Contact INT
+);
+
+INSERT INTO Student VALUES(1,'QWE','PYTHON','HYD',2222);
+INSERT INTO Student VALUES(2,'ASD','PYTHON','WGL',1111);
+INSERT INTO Student VALUES(3,'ZXC','PYTHON','HYD',1212);
+INSERT INTO Student VALUES(4,'POI','C','MBR',1313);
+INSERT INTO Student VALUES(5,'LKJ','C','MBR',1414);
+INSERT INTO Student VALUES(6,'ERT','JAVA','WGL',1515);
+INSERT INTO Student VALUES(7,'QWE','PYTHON','HYD',2222);
+INSERT INTO Student VALUES(8,'HGF','JAVA','WGL',8888);
+INSERT INTO Student VALUES(9,'DFG','HTML','VJW',2222);
+INSERT INTO Student VALUES(10,'AHD','HTML','VJW',2255);
+
+select * from Student where CourseName='JAVA';
+
+select * from Student where CityName='HYD';
+
+select * from Student ORDER BY CityName;
+
+select * from Student ORDER BY CourseName;
+
+select CityName, count(CourseName) from Student GROUP BY CityName;
+
+
+
+select * from Products INNER JOIN Cart on Cart.ProductId=Products.ProductId;
+
+select * from Cart INNER JOIN Products on Cart.ProductId=Products.ProductId where UnitPrice>5000;
